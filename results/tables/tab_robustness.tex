@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Robustness checks: alternative estimators and placebo test.}
+\label{tab:robustness}
+\begin{tabular}{lccccc}
+\toprule
+Estimator & ATT ($\hat{\beta}$) & SE & 95\% CI & $p$-value & Effect (\%) \\
+\midrule
+Borusyak (primary) & -0.0698*** & 0.0239 & [-0.1167, -0.0230] & 0.0035 & -6.7\% \\
+TWFE-SA & -0.0681*** & 0.0238 & [-0.1148, -0.0214] & 0.0049 & -6.6\% \\
+Callaway \& Sant'Anna & 0.0303 & 0.0416 & [-0.0513, 0.1118] & 0.4672 & 3.1\% \\
+Placebo ($t-3$) & -0.0097 & 0.0122 & [-0.0337, 0.0142] & 0.4269 & -1.0\% \\
+\bottomrule
+\multicolumn{6}{l}{\footnotesize $^{*}p<0.1$; $^{**}p<0.05$; $^{***}p<0.01$} \\
+\end{tabular}
+\end{table}

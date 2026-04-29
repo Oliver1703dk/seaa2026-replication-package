@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Summary of DiD estimates across estimators and specifications.}
+\label{tab:combined}
+\small
+\begin{tabular}{lccccc}
+\toprule
+Estimator & $\hat{\beta}$ & SE & 95\% CI & $p$ & Effect (\%) \\
+\midrule
+Borusyak (primary) & -0.0698*** & 0.0239 & [-0.1167, -0.0230] & 0.0035 & -6.7\% \\
+TWFE-SA & -0.0681*** & 0.0238 & [-0.1148, -0.0214] & 0.0049 & -6.6\% \\
+TWFE-SA + covariates & -0.0684*** & 0.0236 & [-0.1147, -0.0221] & 0.0044 & -6.6\% \\
+C\&S (no cov.) & 0.0303 & 0.0416 & [-0.0513, 0.1118] & 0.4672 & 3.1\% \\
+C\&S IPW & 0.0409 & 0.0450 & [-0.0473, 0.1291] & 0.3633 & 4.2\% \\
+Placebo ($t-3$) & -0.0097 & 0.0122 & [-0.0337, 0.0142] & 0.4269 & -1.0\% \\
+\bottomrule
+\multicolumn{6}{l}{\footnotesize $^{*}p<0.1$; $^{**}p<0.05$; $^{***}p<0.01$} \\
+\end{tabular}
+\end{table}

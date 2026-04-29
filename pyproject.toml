@@ -1,0 +1,45 @@
+[project]
+name = "architectural-erosion"
+version = "0.1.0"
+description = "Mining Architectural Quality Under Agentic AI Adoption: A Causal Study of 151 Java Repositories (SEAA 2026 STREAM)"
+requires-python = ">=3.11,<3.13"
+license = {text = "MIT"}
+authors = [
+    {name = "Oliver Aleksander Larsen", email = "olar@mmmi.sdu.dk"},
+    {name = "Mahyar T. Moghaddam", email = "mtmo@mmmi.sdu.dk"},
+]
+
+dependencies = [
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "scikit-learn>=1.4",
+    "networkx>=3.2",
+    "PyGithub>=2.2",
+    "pydriller>=2.9",
+    "requests>=2.31",
+    "pyyaml>=6.0",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.3",
+    "ipykernel>=6.29",
+    "jupyter>=1.0",
+    "matplotlib>=3.8",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

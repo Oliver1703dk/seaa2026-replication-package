@@ -1,0 +1,97 @@
+# Master configuration for architectural erosion study
+# All thresholds, parameters, and paths in one place
+
+study:
+  name: "vibe-coding-architectural-erosion"
+  seed: 42
+
+# Phase 1: Mining
+mining:
+  github_token_env: "GITHUB_TOKEN"
+  language: "Java"
+  min_stars: 5
+  min_loc: 10000
+  min_packages: 30
+  min_commits_per_month: 2
+  min_pre_months: 6
+  min_post_months: 3
+  adoption_threshold: 1  # first detectable AI event; sensitivity with >=3 in robustness (Sec 5.7)
+  adoption_window_days: 30
+
+  # AI tool detection signals
+  ai_markers:
+    cursor:
+      - ".cursorrules"
+      - ".cursor/rules/"
+    copilot:
+      - ".github/copilot-instructions.md"
+    claude_code:
+      - "CLAUDE.md"
+      - "claude.md"
+    aider:
+      - ".aider.conf.yml"
+      - ".aider.model.settings.yml"
+    codex:
+      - "AGENTS.md"
+
+  commit_patterns:
+    - "Co-[Aa]uthored-[Bb]y:.*[Cc]laude"
+    - "Co-[Aa]uthored-[Bb]y:.*aider"
+    - "Co-[Aa]uthored-[Bb]y:.*[Cc]opilot"
+    - "\\(aider\\)"
+
+# Phase 2: Matching
+matching:
+  method: "euclidean_standardized_with_ps_caliper"  # nearest-neighbor on standardized covariates
+  ratio: 1  # 1:1 matching
+  covariates:
+    - "stars"
+    - "size_kb"
+    - "forks"
+    - "num_commits"
+    - "num_contributors"
+    - "repo_age_months"
+  caliper: 0.2
+
+# Phase 3: Extraction + Arcan
+extraction:
+  snapshot_frequency: "monthly"  # first of each month
+  snapshot_branch: "main"  # fallback: master, default
+  arcan:
+    docker_image: "ghcr.io/arcan-tech/arcan-2-cli-trial@sha256:582e95358473c01ad03b6e74830eb6f6263d1aed9beeae5a454015ae36c9f602"
+    language: "JAVA"
+    flags: "--all"
+  repos_dir: "repos/"  # local clone directory (gitignored)
+
+# Phase 4: Analysis
+analysis:
+  alpha: 0.05
+  estimators:
+    primary: "borusyak_imputation"  # didimputation
+    robustness:
+      - "twfe"           # fixest::feols
+      - "callaway_santanna"  # did::att_gt
+  pre_trend_window: 6  # months before adoption
+  post_window: 6       # months after adoption
+
+  # Metrics
+  primary_outcome: "asd"  # architectural smell density
+  smell_types:
+    - "cyclic_dependency"
+    - "unstable_dependency"
+    - "hub_like_dependency"
+    - "god_component"
+  secondary_metrics:
+    - "efferent_coupling"
+    - "instability"
+    - "distance_main_sequence"
+    - "modularity"  # NaN in current data (Arcan CSV lacks full dependency graph)
+
+# Paths (relative to project root)
+paths:
+  raw_data: "data/raw"
+  interim_data: "data/interim"
+  processed_data: "data/processed"
+  figures: "results/figures"
+  tables: "results/tables"
+  logs: "results/logs"

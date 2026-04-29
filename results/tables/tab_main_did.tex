@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Main diff-in-diff estimates: effect of AI tool adoption on architectural smell density (log ASD).}
+\label{tab:main_did}
+\begin{tabular}{lcc}
+\toprule
+ & Borusyak & TWFE-SA \\
+\midrule
+ATT ($\hat{\beta}$) & -0.0698*** & -0.0681*** \\
+ & (0.0239) & (0.0238) \\
+Effect (\%) & -6.7\% & -6.6\% \\
+\bottomrule
+\multicolumn{3}{l}{\footnotesize $^{*}p<0.1$; $^{**}p<0.05$; $^{***}p<0.01$} \\
+\multicolumn{3}{l}{\footnotesize Both: 1,811 obs., 151 repos, repo and time FE, SEs clustered by repo.} \\
+\end{tabular}
+\end{table}

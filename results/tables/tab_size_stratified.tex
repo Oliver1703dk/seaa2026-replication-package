@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\caption{Size-stratified treatment effects (Borusyak imputation, split at median KLOC).}
+\label{tab:size_stratified}
+\begin{tabular}{lccccc}
+\toprule
+Sample & ATT ($\hat{\beta}$) & SE & 95\% CI & $p$-value & Effect (\%) \\
+\midrule
+Small ($\leq$ median) & -0.0652* & 0.0334 & [-0.1308, 0.0003] & 0.0510 & -6.3\% \\
+Large ($>$ median) & -0.0749*** & 0.0283 & [-0.1304, -0.0194] & 0.0082 & -7.2\% \\
+Full sample & -0.0698*** & 0.0239 & [-0.1167, -0.0230] & 0.0035 & -6.7\% \\
+\bottomrule
+\multicolumn{6}{l}{\footnotesize $^{*}p<0.1$; $^{**}p<0.05$; $^{***}p<0.01$} \\
+\end{tabular}
+\end{table}

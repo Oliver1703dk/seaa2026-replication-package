@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Disaggregated treatment effects by architectural smell type (Borusyak imputation).}
+\label{tab:disaggregated}
+\begin{tabular}{lcccccc}
+\toprule
+Smell Type & ATT ($\hat{\beta}$) & SE & 95\% CI & $p$ & Holm $p$ & Effect (\%) \\
+\midrule
+Cyclic Dep. & -0.0508* & 0.0224 & [-0.0947, -0.0069] & 0.0232 & 0.0697 & -5.0\% \\
+Unstable Dep. & 0.0046 & 0.0036 & [-0.0025, 0.0116] & 0.2049 & 0.4098 & 0.5\% \\
+Hub-Like Dep. & -0.0509*** & 0.0151 & [-0.0804, -0.0214] & 0.0007 & 0.0029 & -5.0\% \\
+God Component & 0.0001 & 0.0004 & [-0.0008, 0.0009] & 0.8767 & 0.8767 & 0.0\% \\
+\bottomrule
+\multicolumn{7}{l}{\footnotesize $^{*}p<0.1$; $^{**}p<0.05$; $^{***}p<0.01$ (Holm-adjusted). God Component has 77.5\% zero-inflation.} \\
+\end{tabular}
+\end{table}

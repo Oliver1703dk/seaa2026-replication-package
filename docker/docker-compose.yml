@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # Full pipeline (all 4 phases). Requires GITHUB_TOKEN, ~24h runtime.
+  pipeline-full:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ../data:/app/data
+      - ../results:/app/results
+      - ../config:/app/config
+      - ../repos:/app/repos
+      - /var/run/docker.sock:/var/run/docker.sock  # for Phase 3 Arcan calls
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - PYTHONHASHSEED=42
+    command: make all
+
+  # Analysis only (Phase 4). Requires panel_monthly.csv, ~5 min.
+  analyze:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ../data/processed:/app/data/processed:ro
+      - ../data/interim:/app/data/interim
+      - ../results:/app/results
+      - ../config:/app/config:ro
+    environment:
+      - PYTHONHASHSEED=42
+    command: make analyze
+
+  # Paper compilation
+  paper:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ../paper:/app/paper
+      - ../results:/app/results:ro
+    command: bash -c "cd paper && latexmk -pdf main.tex"
+
+  # Arcan standalone (for manual or scripted smell detection)
+  arcan:
+    image: ghcr.io/arcan-tech/arcan-2-cli-trial@sha256:582e95358473c01ad03b6e74830eb6f6263d1aed9beeae5a454015ae36c9f602
+    volumes:
+      - ../repos:/data/repos:ro
+      - ../data/raw/arcan_output:/data/output
+    # Usage: docker-compose run arcan analyze -i /data/repos/<project> -o /data/output -l JAVA --all
