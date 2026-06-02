@@ -1,5 +1,8 @@
 === Software Versions ===
-Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+Generated: 2026-03-16T09:35:42Z
+NOTE: This is a frozen record of the original analysis run. Versions below
+(including the project's own 0.1.0 at that time) reflect that environment;
+the canonical pinned versions are in renv.lock (R) and uv.lock (Python).
 
 --- Core Tools ---
 Date: 2026-03-16T09:35:42Z
@@ -43,15 +46,8 @@ fqdn                      1.5.1
 gitdb                     4.0.12
 gitpython                 3.1.46
 
---- R Packages (key) ---
+--- R Packages (key; full set pinned in renv.lock, 148 packages) ---
 
-NOTE: Dependency discovery took 16 seconds during snapshot.
-Consider using .renvignore to ignore files, or switching to explicit snapshots.
-See `?renv::dependencies` for more information.
-
-- /path/to/project/data/raw/arcan_output: 2242 files
-
-- The project is out-of-sync -- use `renv::status()` for details.
 fixest=0.11.2
 didimputation=0.3.0
 did=2.1.2

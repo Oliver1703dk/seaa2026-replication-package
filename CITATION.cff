@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this replication package, please cite both the paper and this archive."
+title: "Replication Package: Vibe Coding Meets Architecture: A Causal Study of Agentic AI in Java Repositories"
+type: software
+authors:
+  - given-names: "Oliver Aleksander"
+    family-names: Larsen
+    email: olar@mmmi.sdu.dk
+    affiliation: "SDU Software Engineering, University of Southern Denmark, Odense, Denmark"
+    orcid: "https://orcid.org/0009-0003-6944-2560"
+  - given-names: "Mahyar T."
+    family-names: Moghaddam
+    email: mtmo@mmmi.sdu.dk
+    affiliation: "SDU Software Engineering, University of Southern Denmark, Odense, Denmark"
+    orcid: "https://orcid.org/0000-0001-5028-7546"
+version: 1.0.0
+date-released: 2026-06-02
+license: MIT
+repository-code: "https://github.com/Oliver1703dk/seaa2026-replication-package"
+keywords:
+  - architectural smells
+  - technical debt
+  - AI-assisted coding
+  - vibe coding
+  - difference-in-differences
+  - mining software repositories
+  - Java
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.XXXXXXXX"   # AUTHOR: replace XXXXXXXX with the Zenodo DOI once published
+    description: "Archived replication package (this artifact)"
+preferred-citation:
+  type: conference-paper
+  title: "Vibe Coding Meets Architecture: A Causal Study of Agentic AI in Java Repositories"
+  authors:
+    - given-names: "Oliver Aleksander"
+      family-names: Larsen
+    - given-names: "Mahyar T."
+      family-names: Moghaddam
+  year: 2026
+  collection-title: "Proceedings of the 2026 Euromicro Conference on Software Engineering and Advanced Applications (SEAA 2026), STREAM Track"

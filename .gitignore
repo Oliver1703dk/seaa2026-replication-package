@@ -41,3 +41,15 @@ renv/lock/
 # IDE
 .idea/
 .vscode/
+
+# Secrets (never commit tokens)
+.env
+.env.*
+
+# Large pipeline artifacts (regenerated, not shipped)
+repos/
+data/raw/
+
+# Internal / local-only files (kept locally, not part of the public package)
+open-science/RELEASE_CHECKLIST.md
+*.bak

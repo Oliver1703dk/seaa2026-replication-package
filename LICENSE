@@ -1,6 +1,7 @@
-MIT License (code) + CC BY 4.0 (data)
+MIT License
 
-Code License (MIT):
+Copyright (c) 2026 Oliver Aleksander Larsen, Mahyar T. Moghaddam (University of Southern Denmark)
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -13,9 +14,14 @@ copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-Data License (CC BY 4.0):
-The datasets in data/ are licensed under the Creative Commons Attribution 4.0
-International License. To view a copy of this license, visit
-https://creativecommons.org/licenses/by/4.0/
+---
+
+This license (MIT) covers the SOURCE CODE in this repository (src/, Makefile,
+docker/, config/, tests/). The DATA in data/ is licensed separately under
+CC BY 4.0; see DATA-LICENSE.txt.

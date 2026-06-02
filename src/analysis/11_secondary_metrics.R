@@ -1,4 +1,4 @@
-# 10_secondary_metrics.R - DiD on secondary graph metrics (Ce, Instability, Distance)
+# 11_secondary_metrics.R - DiD on secondary graph metrics (Ce, Instability, Distance)
 # Input:  data/processed/panel_monthly.csv
 # Output: data/interim/models/m_secondary_*.rds
 #
@@ -12,10 +12,10 @@ suppressPackageStartupMessages({
 })
 
 set.seed(SEED)
-LOGFILE <- file.path(DIR_LOGS, "10_secondary_metrics.log")
+LOGFILE <- file.path(DIR_LOGS, "11_secondary_metrics.log")
 cat("", file = LOGFILE)
 
-log_msg("=== 10: Secondary Graph Metrics ===", logfile = LOGFILE)
+log_msg("=== 11: Secondary Graph Metrics ===", logfile = LOGFILE)
 
 # --- Load data ---
 panel <- load_panel()
@@ -111,4 +111,4 @@ if ("ca_mean" %in% names(panel_cc)) {
   }
 }
 
-log_msg("\n=== 10: Complete ===", logfile = LOGFILE)
+log_msg("\n=== 11: Complete ===", logfile = LOGFILE)

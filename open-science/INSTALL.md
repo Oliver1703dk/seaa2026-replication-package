@@ -2,8 +2,8 @@
 
 ## Overview
 
-This artifact accompanies the paper "Mining Architectural Quality
-Under Agentic AI Adoption: A Causal Study of 151 Java Repositories"
+This artifact accompanies the paper "Vibe Coding Meets Architecture:
+A Causal Study of Agentic AI in Java Repositories"
 (SEAA 2026 STREAM Track).
 
 It supports reproduction of all four research questions:
@@ -28,16 +28,17 @@ It supports reproduction of all four research questions:
 This reproduces all statistical results, figures, and tables from the
 pre-built panel dataset. No GitHub token or repo cloning required.
 
-```bash
-# 1. Download the panel dataset from Zenodo
-#    DOI: [TBD  - reserve before submission at zenodo.org/deposit/new]
-#    Place panel_monthly.csv in data/processed/
+The frozen panel dataset is already included in this package under
+`data/processed/`, so no separate download is needed when running from the
+cloned repository or the Zenodo archive. (The same archive is published at
+Zenodo DOI `10.5281/zenodo.XXXXXXXX` once released.)
 
-# 2. Run the analysis
+```bash
+# 1. Run the analysis (reads the shipped data/processed/panel_monthly.csv)
 cd docker
 docker-compose run --rm analyze
 
-# 3. Check outputs
+# 2. Check outputs
 ls ../results/figures/   # PDF figures
 ls ../results/tables/    # LaTeX tables
 cat ../results/logs/analysis_summary.txt  # Key estimates
@@ -106,10 +107,10 @@ make analyze
 
 # Run full pipeline (requires GITHUB_TOKEN)
 make all
-
-# Compile paper
-make paper
 ```
+
+(The paper LaTeX source is not part of this replication package; it is
+submitted separately.)
 
 ## Arcan Trial License
 
@@ -117,7 +118,7 @@ This study uses the Arcan 2 CLI trial edition for architectural smell detection.
 
 1. **Docker image:** `ghcr.io/arcan-tech/arcan-2-cli-trial` (SHA256 digest pinned in `config/config.yaml`).
 2. The trial edition detects all four smell types used in this study: Cyclic Dependency (CD), Unstable Dependency (UD), Hub-Like Dependency (HL), and God Component (GC).
-3. **Pre-computed outputs:** All Arcan CSV outputs are included in this archive under `data/raw/arcan_output/` as a fallback for reviewers who cannot run Docker or obtain the trial image.
+3. **Pre-computed outputs:** The raw per-snapshot Arcan CSVs (`data/raw/arcan_output/`) are NOT shipped (size). Their parsed, analysis-ready summaries ARE included under `data/interim/` (`parsed_smells_summary.csv`, `graph_metrics_summary.csv`, `arcan_status.csv`), and the assembled `data/processed/panel_monthly.csv` is the frozen input that guarantees exact reproduction of all results without running Arcan.
 4. To obtain the trial: pull the Docker image from `ghcr.io/arcan-tech/arcan-2-cli-trial`. No registration required.
 
 ## Software Versions
@@ -125,8 +126,11 @@ This study uses the Arcan 2 CLI trial edition for architectural smell detection.
 See `results/logs/software_versions.txt` for exact versions used in our analysis.
 
 Key versions:
-- Python 3.11+ (tested with 3.13)
-- R 4.2+ with fixest 0.11.2, didimputation 0.3.0, did 2.1.2
+- Python >=3.11,<3.13 (the Docker image uses Python 3.12; the original analysis
+  was run on 3.13.5, but the pinned `requires-python` is `>=3.11,<3.13`)
+- R 4.2+ with fixest 0.11.2, didimputation 0.3.0, did 2.1.2 (renv.lock records
+  R 4.2.1; restoring under a newer R 4.x minor may emit a version-mismatch
+  warning, which is expected and safe)
 - Arcan 2 CLI (Docker image digest in config/config.yaml)
 - See `uv.lock` for Python package versions
 - See `renv.lock` for R package versions
@@ -147,26 +151,32 @@ Key versions:
 .
 ├── config/              # Configuration (config.yaml, repo lists)
 ├── data/
-│   ├── raw/             # Immutable raw data (API responses, Arcan output)
-│   ├── interim/         # Intermediate data (parsed smells, models)
-│   └── processed/       # Analysis-ready data (panel_monthly.csv)
+│   ├── interim/         # Parsed Arcan summaries, snapshot manifest, models/
+│   └── processed/       # Analysis-ready frozen data (panel_monthly.csv, matching.csv, ...)
+│                        # (data/raw/ is NOT shipped; regenerate via the full pipeline)
 ├── docker/              # Dockerfile, docker-compose.yml
-├── open-science/        # This file, artifact abstract, badge checklist
-├── paper/               # LaTeX source
+├── open-science/        # This file (INSTALL), artifact_abstract.md
+├── tests/               # Smoke tests for the shipped panel (pytest)
 ├── results/
 │   ├── figures/         # PDF figures
 │   ├── tables/          # LaTeX tables
-│   └── logs/            # Execution logs, analysis summary
+│   └── logs/            # Execution logs, analysis summary, software versions
 ├── src/
 │   ├── mining/          # Phase 1: GitHub mining scripts
 │   ├── matching/        # Phase 2: Propensity score matching
 │   ├── extraction/      # Phase 3: Snapshot extraction + Arcan
-│   └── analysis/        # Phase 4: R analysis scripts (01-09)
+│   └── analysis/        # Phase 4: R analysis scripts (01-12) + utils
+├── CITATION.cff         # Citation metadata
+├── .zenodo.json         # Zenodo archive metadata
+├── LICENSE              # MIT (source code)
+├── DATA-LICENSE.txt     # CC BY 4.0 (data in data/)
 ├── Makefile             # Pipeline orchestration
 ├── pyproject.toml       # Python project config
 ├── uv.lock              # Python dependency lockfile
-└── renv.lock            # R dependency lockfile
+├── renv.lock            # R dependency lockfile
+└── renv/                # renv bootstrap (activate.R, settings.json)
 ```
+(The paper LaTeX source is submitted separately and is not part of this package.)
 
 ## Data Availability
 

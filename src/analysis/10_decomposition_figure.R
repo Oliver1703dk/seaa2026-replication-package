@@ -1,4 +1,4 @@
-# 09_decomposition_figure.R - Two-panel decomposition figure (ASD + LOC event studies)
+# 10_decomposition_figure.R - Two-panel decomposition figure (ASD + LOC event studies)
 # Input:  data/interim/models/m_es_borusyak.rds, data/interim/models/m_supp_loc_es.rds
 # Output: results/figures/fig_decomposition_panels.pdf
 
@@ -10,10 +10,10 @@ suppressPackageStartupMessages({
 })
 
 set.seed(SEED)
-LOGFILE <- file.path(DIR_LOGS, "09_decomposition_figure.log")
+LOGFILE <- file.path(DIR_LOGS, "10_decomposition_figure.log")
 cat("", file = LOGFILE)
 
-log_msg("=== 09: Decomposition Two-Panel Figure ===", logfile = LOGFILE)
+log_msg("=== 10: Decomposition Two-Panel Figure ===", logfile = LOGFILE)
 
 # Colors
 COL_ASD <- "#2166AC"  # blue
@@ -74,4 +74,4 @@ p_combined <- p_asd / p_loc +
 
 save_fig(p_combined, "fig_decomposition_panels.pdf", w = 7, h = 6)
 log_msg("Saved: fig_decomposition_panels.pdf", logfile = LOGFILE)
-log_msg("=== 09: Complete ===", logfile = LOGFILE)
+log_msg("=== 10: Complete ===", logfile = LOGFILE)

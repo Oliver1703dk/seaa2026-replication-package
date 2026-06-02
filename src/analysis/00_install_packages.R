@@ -30,6 +30,7 @@ pkgs <- c(
   "dplyr", "tidyr", "readr", "ggplot2", "purrr", "stringr", "forcats", "tibble",
   "here", "yaml", "data.table",
   "fixest", "didimputation", "did", "plm",
+  "bacondecomp", "fwildclusterboot", "lme4",
   "ggfixest", "patchwork",
   "modelsummary", "kableExtra",
   "broom"

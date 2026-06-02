@@ -1,8 +1,8 @@
 # Artifact Abstract
 
 ## Paper Title
-Mining Architectural Quality Under Agentic AI Adoption: A Causal Study
-of 151 Java Repositories
+Vibe Coding Meets Architecture: A Causal Study of Agentic AI in Java
+Repositories
 
 ## Artifact Summary
 
@@ -22,7 +22,7 @@ repositories.
 | Panel dataset | 2,241 repo-month observations (1,811 with complete metrics) across 151 analysis repos (74 treatment, 77 control) | `data/processed/panel_monthly.csv` |
 | Configuration | All parameters, repo lists, thresholds | `config/` |
 | Docker environment | Reproducible execution environment | `docker/` |
-| R lockfile | 179 R packages pinned | `renv.lock` |
+| R lockfile | 148 R packages pinned | `renv.lock` |
 | Python lockfile | 134 Python packages pinned | `uv.lock` |
 | Paper source | Full LaTeX source | *(submitted separately)* |
 

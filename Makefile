@@ -1,4 +1,4 @@
-.PHONY: all mine match extract analyze paper clean help
+.PHONY: all mine match extract analyze clean distclean help
 
 PYTHON := uv run python
 RSCRIPT := Rscript
@@ -32,9 +32,13 @@ extract: ## Extract monthly snapshots & run Arcan analysis
 	$(PYTHON) src/extraction/03_parse_arcan_output.py
 	$(PYTHON) src/extraction/04_compute_metrics.py
 	$(PYTHON) src/extraction/05_build_panel.py
+	$(PYTHON) src/analysis/12_control_contamination.py  # control AI-contamination check (needs repos/)
 
 # Phase 4: Statistical analysis
-analyze: ## Run diff-in-diff analysis & generate results
+# Runs against the FROZEN datasets in data/processed/ (shipped). Reproduces all
+# figures/tables. 12_control_contamination.py is intentionally NOT here: it needs
+# the un-shipped bare clones in repos/ and is part of `extract` (full pipeline).
+analyze: ## Run diff-in-diff analysis & generate results (analysis-only path)
 	$(RSCRIPT) src/analysis/01_descriptive_stats.R
 	$(RSCRIPT) src/analysis/02_main_did.R
 	$(RSCRIPT) src/analysis/03_disaggregated_did.R
@@ -46,17 +50,20 @@ analyze: ## Run diff-in-diff analysis & generate results
 	$(RSCRIPT) src/analysis/09_tool_heterogeneity.R
 	$(RSCRIPT) src/analysis/10_decomposition_figure.R
 	$(RSCRIPT) src/analysis/11_secondary_metrics.R
-	$(PYTHON) src/analysis/12_control_contamination.py
-
-# Paper
-paper: ## Compile LaTeX paper
-	cd paper && latexmk -pdf main.tex
 
 # Utilities
-clean: ## Remove generated outputs (keeps raw data)
+# NOTE: clean removes ONLY regenerable outputs under results/. It never touches
+# data/processed/*.csv: those are the shipped frozen inputs the analysis path
+# depends on and cannot be regenerated without the full mining->Arcan pipeline.
+clean: ## Remove regenerable outputs in results/ (keeps shipped data inputs)
 	rm -rf results/figures/*.pdf results/figures/*.png
 	rm -rf results/tables/*.tex
 	rm -rf results/logs/*.log
+
+distclean: clean ## Also remove regenerated panel/interim data (requires full pipeline to rebuild)
+	@echo "WARNING: distclean removes data/processed/*.csv and derived interim CSVs."
+	@echo "These are SHIPPED frozen inputs; rebuilding them needs the full mining->Arcan pipeline (~24h, GitHub token)."
+	@echo "Press Ctrl-C within 5s to abort." && sleep 5
 	rm -rf data/interim/parsed_smells/*.csv
 	rm -rf data/interim/graph_metrics/*.csv
 	rm -rf data/processed/*.csv

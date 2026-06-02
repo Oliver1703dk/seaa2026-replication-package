@@ -31,17 +31,8 @@ services:
       - PYTHONHASHSEED=42
     command: make analyze
 
-  # Paper compilation
-  paper:
-    build:
-      context: ..
-      dockerfile: docker/Dockerfile
-    volumes:
-      - ../paper:/app/paper
-      - ../results:/app/results:ro
-    command: bash -c "cd paper && latexmk -pdf main.tex"
-
-  # Arcan standalone (for manual or scripted smell detection)
+  # Arcan standalone (full-pipeline smell detection). repos/ and
+  # data/raw/arcan_output/ are created by the full pipeline; they are not shipped.
   arcan:
     image: ghcr.io/arcan-tech/arcan-2-cli-trial@sha256:582e95358473c01ad03b6e74830eb6f6263d1aed9beeae5a454015ae36c9f602
     volumes:

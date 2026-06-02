@@ -1,7 +1,7 @@
 [project]
 name = "architectural-erosion"
-version = "0.1.0"
-description = "Mining Architectural Quality Under Agentic AI Adoption: A Causal Study of 151 Java Repositories (SEAA 2026 STREAM)"
+version = "1.0.0"
+description = "Vibe Coding Meets Architecture: A Causal Study of Agentic AI in Java Repositories (SEAA 2026 STREAM)"
 requires-python = ">=3.11,<3.13"
 license = {text = "MIT"}
 authors = [
@@ -21,7 +21,10 @@ dependencies = [
     "tqdm>=4.66",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
+# Dev tools (tests, lint, notebooks). uv installs these by default with
+# `uv sync` / `uv run`, so `uv run pytest tests/` works out of the box. The
+# Docker image uses `uv sync --frozen --no-dev`, which excludes this group.
 dev = [
     "pytest>=8.0",
     "ruff>=0.3",

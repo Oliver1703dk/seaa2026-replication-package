@@ -1,11 +1,16 @@
 """
-10_control_contamination.py - Check control repos for AI tool adoption during study windows.
+12_control_contamination.py - Check control repos for AI tool adoption during study windows.
 
 Scans each control repo's bare clone for:
   1. AI config files appearing in monthly snapshots (git ls-tree)
   2. Co-Authored-By commit trailers indicating AI tool usage (git log)
 
 Outputs: data/interim/control_contamination.csv
+
+NOTE: This is a full-pipeline (mining/extraction) validation step, NOT part of the
+analysis-only path. It requires the bare clones in repos/, which are not shipped in
+the replication package. If repos/ is absent it exits without writing, so it can never
+overwrite the shipped frozen data/interim/control_contamination.csv.
 """
 
 import csv
@@ -27,7 +32,7 @@ logging.basicConfig(
     format="%(asctime)s %(levelname)s %(message)s",
     handlers=[
         logging.StreamHandler(),
-        logging.FileHandler(ROOT / "results/logs/10_control_contamination.log", mode="w"),
+        logging.FileHandler(ROOT / "results/logs/12_control_contamination.log", mode="w"),
     ],
 )
 log = logging.getLogger(__name__)
@@ -150,6 +155,19 @@ def next_month(ym: str) -> str:
 
 
 def main() -> None:
+    # ── Guard: require bare clones in repos/ ───────────────────────────
+    # repos/ is not shipped with the replication package. Without it every
+    # control would be marked 'unknown', so we must NOT write (it would clobber
+    # the shipped frozen data/interim/control_contamination.csv). Exit cleanly.
+    if not REPOS_DIR.exists():
+        log.warning(
+            "repos/ not found at %s; skipping contamination scan and leaving the "
+            "shipped data/interim/control_contamination.csv untouched. This step is "
+            "part of the full mining/extraction pipeline, not the analysis-only path.",
+            REPOS_DIR,
+        )
+        return
+
     # ── Load matching.csv ──────────────────────────────────────────────
     matching_path = ROOT / "data/processed/matching.csv"
     with open(matching_path) as f:
