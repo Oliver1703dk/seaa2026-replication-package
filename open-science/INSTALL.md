@@ -31,7 +31,7 @@ pre-built panel dataset. No GitHub token or repo cloning required.
 The frozen panel dataset is already included in this package under
 `data/processed/`, so no separate download is needed when running from the
 cloned repository or the Zenodo archive. (The same archive is published at
-Zenodo DOI `10.5281/zenodo.XXXXXXXX` once released.)
+Zenodo DOI [10.5281/zenodo.20510048](https://doi.org/10.5281/zenodo.20510048).)
 
 ```bash
 # 1. Run the analysis (reads the shipped data/processed/panel_monthly.csv)

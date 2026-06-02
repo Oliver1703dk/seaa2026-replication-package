@@ -27,7 +27,7 @@ keywords:
   - Java
 identifiers:
   - type: doi
-    value: "10.5281/zenodo.XXXXXXXX"   # AUTHOR: replace XXXXXXXX with the Zenodo DOI once published
+    value: "10.5281/zenodo.20510048"
     description: "Archived replication package (this artifact)"
 preferred-citation:
   type: conference-paper

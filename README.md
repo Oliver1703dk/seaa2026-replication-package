@@ -1,7 +1,6 @@
 # Replication Package: Vibe Coding Meets Architecture
 
-<!-- After the Zenodo release, replace XXXXXXXX in the DOI badge and in "How to cite" below. -->
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20510048.svg)](https://doi.org/10.5281/zenodo.20510048)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Replication package for "Vibe Coding Meets Architecture: A Causal Study of
@@ -207,8 +206,7 @@ this repository" button from it).
 > Euromicro Conference on Software Engineering and Advanced Applications
 > (SEAA 2026), STREAM Track.
 
-Archived replication package: **DOI 10.5281/zenodo.XXXXXXXX**
-(replace `XXXXXXXX` with the Zenodo DOI after release).
+Archived replication package: **DOI [10.5281/zenodo.20510048](https://doi.org/10.5281/zenodo.20510048)**
 
 ## License
 
