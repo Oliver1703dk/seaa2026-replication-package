@@ -1,7 +1,7 @@
 [project]
 name = "architectural-erosion"
 version = "1.0.0"
-description = "Vibe Coding Meets Architecture: A Causal Study of Agentic AI in Java Repositories (SEAA 2026 STREAM)"
+description = "Mining Architectural Quality Under Agentic AI Adoption: A Causal Study of Java Repositories (SEAA 2026 STREAM)"
 requires-python = ">=3.11,<3.13"
 license = {text = "MIT"}
 authors = [

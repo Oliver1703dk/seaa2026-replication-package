@@ -2,8 +2,8 @@
 
 ## Overview
 
-This artifact accompanies the paper "Vibe Coding Meets Architecture:
-A Causal Study of Agentic AI in Java Repositories"
+This artifact accompanies the paper "Mining Architectural Quality Under
+Agentic AI Adoption: A Causal Study of Java Repositories"
 (SEAA 2026 STREAM Track).
 
 It supports reproduction of all four research questions:

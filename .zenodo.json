@@ -1,6 +1,6 @@
 {
   "upload_type": "software",
-  "title": "Replication Package: Vibe Coding Meets Architecture: A Causal Study of Agentic AI in Java Repositories",
+  "title": "Replication Package: Mining Architectural Quality Under Agentic AI Adoption: A Causal Study of Java Repositories",
   "version": "1.0.0",
   "description": "Replication package for the SEAA 2026 STREAM Track paper. A staggered difference-in-differences mining study measuring whether observable agentic AI tool adoption (configuration files or Co-Authored-By commit trailers) changes architectural smell density in 151 open-source Java repositories (74 adopters, 77 propensity-matched controls). The package contains the frozen monthly panel dataset, the R and Python analysis pipeline, a Docker environment, and pinned dependency lockfiles (renv.lock, uv.lock) that reproduce all figures and tables via `make analyze`. Source code is licensed MIT; the data in data/ is licensed CC BY 4.0 (see LICENSE and DATA-LICENSE.txt).",
   "creators": [

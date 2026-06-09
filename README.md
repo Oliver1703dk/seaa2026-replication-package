@@ -1,10 +1,11 @@
-# Replication Package: Vibe Coding Meets Architecture
+# Replication Package: Mining Architectural Quality Under Agentic AI Adoption: A Causal Study of Java Repositories
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20510048.svg)](https://doi.org/10.5281/zenodo.20510048)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Replication package for "Vibe Coding Meets Architecture: A Causal Study of
-Agentic AI in Java Repositories", accepted at the SEAA 2026 STREAM Track.
+Replication package for "Mining Architectural Quality Under Agentic AI
+Adoption: A Causal Study of Java Repositories", accepted at the SEAA 2026
+STREAM Track.
 
 ## Study summary
 
@@ -201,8 +202,8 @@ If you use this replication package, please cite both the paper and the archive.
 Citation metadata is in [`CITATION.cff`](CITATION.cff) (GitHub renders a "Cite
 this repository" button from it).
 
-> Larsen, O. A., & Moghaddam, M. T. (2026). *Vibe Coding Meets Architecture: A
-> Causal Study of Agentic AI in Java Repositories.* In Proceedings of the 2026
+> Larsen, O. A., & Moghaddam, M. T. (2026). *Mining Architectural Quality Under
+> Agentic AI Adoption: A Causal Study of Java Repositories.* In Proceedings of the 2026
 > Euromicro Conference on Software Engineering and Advanced Applications
 > (SEAA 2026), STREAM Track.
 

@@ -1,8 +1,8 @@
 # Artifact Abstract
 
 ## Paper Title
-Vibe Coding Meets Architecture: A Causal Study of Agentic AI in Java
-Repositories
+Mining Architectural Quality Under Agentic AI Adoption: A Causal Study of
+Java Repositories
 
 ## Artifact Summary
 

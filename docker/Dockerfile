@@ -3,7 +3,7 @@ FROM ubuntu:24.04
 # need the deadsnakes PPA for 3.11+.  Using 24.04 is simpler and still LTS.
 
 LABEL maintainer="Oliver A. Larsen, Mahyar T. Moghaddam <olar@mmmi.sdu.dk>"
-LABEL description="Replication environment for Vibe Coding Meets Architecture: A Causal Study of Agentic AI in Java Repositories (SEAA 2026 STREAM)"
+LABEL description="Replication environment for Mining Architectural Quality Under Agentic AI Adoption: A Causal Study of Java Repositories (SEAA 2026 STREAM)"
 
 # Prevent interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
